@@ -4,10 +4,6 @@ USER root
 
 WORKDIR /app
 
-RUN yarn install
-
-WORKDIR /app
-
 RUN npm i -g yarn
 
 COPY package.json yarn.lock ./
