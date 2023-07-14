@@ -1,5 +1,7 @@
 FROM node:16.17.1
 
+USER root
+
 WORKDIR /app
 
 RUN yarn install
