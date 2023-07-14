@@ -4,7 +4,7 @@ USER root
 
 WORKDIR /app
 
-RUN npm i -g yarn
+#RUN npm i -g yarn
 
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
