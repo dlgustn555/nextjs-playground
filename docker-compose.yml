@@ -2,13 +2,13 @@ version: "3.9"
 
 services:
   nginx:
-    image: nextjs-nginx
+    image: playground-nginx
     restart: unless-stopped
     ports:
       - 80:80
 
   nextjs:
-    image: nextjs-app
+    image: playground-app
     restart: unless-stopped
     ports:
       - 3000:3000
