@@ -4,6 +4,7 @@ USER root
 
 WORKDIR /app
 
+
 #RUN npm i -g yarn
 
 # 패키지 설치 관련 도커 컨테이러 레이러를 별도로 가지기 위해서,
@@ -11,6 +12,13 @@ WORKDIR /app
 # 변경된 부분이 없다면 캐시된것을 사용한다. 
 COPY package.json yarn.lock ./
 
+FROM nginx  AS web
+
+# Delete the default nginx configuration
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copy our configuration file
+COPY nginx.conf /etc/nginx/conf.d/
 
 FROM base AS build
 
