@@ -4,6 +4,7 @@ USER root
 
 WORKDIR /app
 
+
 #RUN npm i -g yarn
 
 # 패키지 설치 관련 도커 컨테이러 레이러를 별도로 가지기 위해서,
@@ -12,12 +13,15 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 
 
+
+#######################################
 FROM base AS build
 
 RUN yarn install --frozen-lockfile
 
 
 
+#######################################
 FROM base AS release
 
 # 소스 코드 관련 도커 컨테이너 레이어
