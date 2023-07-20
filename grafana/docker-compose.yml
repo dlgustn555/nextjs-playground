@@ -3,7 +3,8 @@ services:
   grafana:
     image: grafana
     restart: unless-stopped
-    ports: -5000:5000
+    ports:
+      - 5000:5000
     environment:
       - GF_INSTALL_PLUGINS=value
     volumes:
