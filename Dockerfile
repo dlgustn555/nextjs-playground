@@ -1,3 +1,4 @@
+############## STAGE 1 ##############
 FROM node:18.16.1 AS base
 
 USER root
@@ -14,14 +15,14 @@ COPY package.json yarn.lock ./
 
 
 
-#######################################
+############## STAGE 2 ##############
 FROM base AS build
 
 RUN yarn install --frozen-lockfile
 
 
 
-#######################################
+############## STAGE 3 ##############
 FROM base AS release
 
 # 소스 코드 관련 도커 컨테이너 레이어
@@ -29,9 +30,9 @@ COPY --from=build /app/node_modules ./node_modules
 
 COPY . .
  
-# 해당 도커를 이미지를 사용하는 사용자에게 해당 도커 이미지가 3000 포트를 사용한다고 알려준다.
+# 해당 도커를 이미지를 사용하는 사용자에게 해당 도커 이미지가 3001 포트를 사용한다고 알려준다.
 # 단지 문서로 알려 주는 용도!!
-EXPOSE 3000
+EXPOSE 3001
 
 RUN yarn build
 
