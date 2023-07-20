@@ -28,7 +28,7 @@ FROM base AS release
 # 소스 코드 관련 도커 컨테이너 레이어
 COPY --from=build /app/node_modules ./node_modules
 
-COPY ../ .
+COPY . .
  
 # 해당 도커를 이미지를 사용하는 사용자에게 해당 도커 이미지가 3001 포트를 사용한다고 알려준다.
 # 단지 문서로 알려 주는 용도!!
