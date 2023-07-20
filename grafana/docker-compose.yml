@@ -5,8 +5,8 @@ services:
     restart: unless-stopped
     ports:
       - 5000:5000
-    environment:
-      - GF_INSTALL_PLUGINS=value
+    # environment:
+    #   - GF_INSTALL_PLUGINS=value
     volumes:
       - ./grafana.ini:/etc/grafana/grafana.ini:ro
       - grafana-data:/var/lib/grafana
