@@ -18,7 +18,7 @@ COPY ./package.json ./yarn.lock ./
 ############## STAGE 2 ##############
 FROM base AS build
 
-RUN cd ../ && yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile
 
 
 
