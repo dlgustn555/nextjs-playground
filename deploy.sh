@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+git pull
+
 docker-compose down
 
 docker-compose build
