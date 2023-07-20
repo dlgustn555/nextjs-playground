@@ -1,13 +1,9 @@
 #!/usr/bin/env sh
 
-docker build -t playground-app .
-
-cd nginx
-
-docker build -t playground-nginx .
-
-cd ../
+git pull
 
 docker-compose down
+
+docker-compose build
 
 docker-compose up -d

@@ -1,5 +1,4 @@
-
-FROM nginx  AS web
+FROM nginx
 
 # Delete the default nginx configuration
 RUN rm /etc/nginx/conf.d/default.conf
