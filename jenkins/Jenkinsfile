@@ -19,11 +19,11 @@ pipeline {
             }
         }
 
-        stage('DELETE NextJs-App Docker Image ') {
-            steps {
-                sh 'docker rmi dlgustn555/nextjs-playground'
-            }
-        }
+        // stage('DELETE NextJs-App Docker Image ') {
+        //     steps {
+        //         sh 'docker rmi dlgustn555/nextjs-playground'
+        //     }
+        // }
 
         stage('Deploy NextJs-App to Web Server') {
             steps {
