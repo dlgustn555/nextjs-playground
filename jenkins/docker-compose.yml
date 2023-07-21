@@ -1,8 +1,9 @@
 version: "3.9"
 services:
   jenkins:
-    context: .
-    dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     image: jenkins/jenkins:latest
     container_name: jenkins
