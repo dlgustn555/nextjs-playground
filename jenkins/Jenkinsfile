@@ -13,6 +13,11 @@ pipeline {
             }
         }
 
+        stage('Docker Hub Login') {
+            steps {
+                sh 'docker login -u dlgustn555'
+            }
+        }
         stage('NextJs-App Docker Image Push') {
             steps {
                 sh 'docker push dlgustn555/nextjs-playground'
