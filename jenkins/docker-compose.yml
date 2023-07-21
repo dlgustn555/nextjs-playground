@@ -1,11 +1,15 @@
 version: "3.9"
 services:
   jenkins:
+    context: .
+    dockerfile: Dockerfile
     restart: unless-stopped
     image: jenkins/jenkins:latest
     container_name: jenkins
     ports:
       - 8080:8080
+      - 50200:50000
     volumes:
       - /home/dlgustn555/jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
     user: root
