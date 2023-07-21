@@ -9,7 +9,7 @@ pipeline {
 
         stage('Build Codes by Docker') {
             steps {
-                sh 'docker build -t nextjs-app .'
+                sh 'docker build -t dlgustn555/nextjs-playground .'
             }
         }
     }
