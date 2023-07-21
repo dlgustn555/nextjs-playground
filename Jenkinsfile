@@ -1,12 +1,16 @@
-node {
-    /* Requires the Docker Pipeline plugin to be installed */
-    docker.image('node:18.16.1').inside {
-        stage('Pull Code from GitHub') {
-            checkout scm
+pipeline {
+    agent any
+    stages {
+        stage('Pull Codes from Github') {
+            steps {
+                checkout scm
+            }
         }
 
-        stage('Docker Image Build') {
-            sh 'docker build -t nextjs-app .'
+        stage('Build Codes by Docker') {
+            steps {
+                sh 'docker build -t nextjs-app .'
+            }
         }
     }
 }
