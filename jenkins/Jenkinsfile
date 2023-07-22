@@ -7,15 +7,10 @@ pipeline {
             }
         }
 
-        stage('NextJs-App Dockerfile Build') {
+        stage('Dockerfile Build') {
             steps {
                 sh 'docker build -t dlgustn555/nextjs-playground .'
-            }
-        }
-
-        stage('NextJs-Nginx Dockerfile Build') {
-            steps {
-                sh 'docker build -t dlgustn555/nextjs-playground-nginx .'
+                sh 'docker build -t  dlgustn555/nextjs-playground-nginx .'
             }
         }
 
@@ -27,9 +22,10 @@ pipeline {
             }
         }
 
-        stage('NextJs-App Docker Image Push') {
+        stage('Docker Image Push') {
             steps {
                 sh 'docker push dlgustn555/nextjs-playground'
+                sh 'docker push dlgustn555/nextjs-playground-nginx'
             }
         }
 
@@ -50,7 +46,7 @@ pipeline {
                         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY dlgustn555@192.168.56.101 "\
                         docker stop nextjs-app nextjs-nginx || true && \
                         docker rm nextjs-app nextjs-nginx || true && \
-                        docker run -d -p 3000:3000 --name nextjs-app dlgustn555/nextjs-playground \
+                        docker run -d -p 3000:3000 --name nextjs-app dlgustn555/nextjs-playground; \
                         docker run -d -p 80:80 --name nextjs-nginx dlgustn555/nextjs-playground-nginx"
                     '''
                 }
