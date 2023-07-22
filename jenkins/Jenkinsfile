@@ -44,10 +44,12 @@ pipeline {
                     sh '''
                         chmod 600 $SSH_KEY 
                         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY dlgustn555@192.168.56.101 "\
+                        docker network create nextjs-playground || true && \
                         docker stop nextjs-app nextjs-nginx || true && \
                         docker rm nextjs-app nextjs-nginx || true && \
-                        docker run -d -p 3000:3000 --name nextjs-app dlgustn555/nextjs-playground; \
-                        docker run -d -p 80:80 --name nextjs-nginx dlgustn555/nextjs-playground-nginx"
+                        docker rmi dlgustn555/nextjs-playground dlgustn555/nextjs-playground-nginx
+                        docker run -d -p 3000:3000 --name nextjs-app --net nextjs-playground dlgustn555/nextjs-playground; \
+                        docker run -d -p 80:80 --name nextjs-nginx nextjs-playground dlgustn555/nextjs-playground-nginx"
                     '''
                 }
             }
