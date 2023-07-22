@@ -35,7 +35,7 @@ pipeline {
 
         stage('Deploy NextJs-App to Web Server') {
             steps {
-                sh 'ssh dlgustn555@192.168.56.101 "docker run -d -p 3000:3000 dlgustn555/nextjs-playground"'
+                sh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no dlgustn555@192.168.56.101 "docker run -d -p 3000:3000 dlgustn555/nextjs-playground"'
             }
         }
     }
