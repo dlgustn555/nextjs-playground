@@ -47,8 +47,8 @@ pipeline {
                         docker network create nextjs-playground || true && \
                         docker stop nextjs-app nextjs-nginx || true && \
                         docker rm nextjs-app nextjs-nginx || true && \
-                        docker rmi dlgustn555/nextjs-playground dlgustn555/nextjs-playground-nginx
-                        docker run -d -p 3000:3000 --name nextjs-app --net nextjs-playground dlgustn555/nextjs-playground; \
+                        docker rmi dlgustn555/nextjs-playground dlgustn555/nextjs-playground-nginx && \
+                        docker run -d -p 3000:3000 --name nextjs-app --net nextjs-playground dlgustn555/nextjs-playground &&  \
                         docker run -d -p 80:80 --name nextjs-nginx nextjs-playground dlgustn555/nextjs-playground-nginx"
                     '''
                 }
