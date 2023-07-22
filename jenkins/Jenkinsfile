@@ -33,6 +33,15 @@ pipeline {
         //     }
         // }
 
+        stage('Prepare SSH') {
+            steps {
+                sh '''
+                    mkdir -p ~/.ssh
+                    ssh-keyscan 192.168.56.101 >> ~/.ssh/known_hosts
+                '''
+            }
+        }
+
         stage('Deploy NextJs-App to Web Server') {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'deploy-ssh', keyFileVariable: 'SSH_KEY')]) {
