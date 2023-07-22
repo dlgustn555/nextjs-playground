@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+    stages {
+        stage('Pull Codes from Github') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Dockerfile Build') {
+            steps {
+                sh 'docker build -t dlgustn555/nextjs-playground .'
+                sh 'docker build -t  dlgustn555/nextjs-playground-nginx ./nginx'
+            }
+        }
+
+        stage('Docker Hub Login') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-id', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                }
+            }
+        }
+
+        stage('Docker Image Push') {
+            steps {
+                sh 'docker push dlgustn555/nextjs-playground'
+                sh 'docker push dlgustn555/nextjs-playground-nginx'
+            }
+        }
+
+        stage('Prepare SSH') {
+            steps {
+                sh '''
+                    mkdir -p ~/.ssh
+                    ssh-keyscan 192.168.56.101 >> ~/.ssh/known_hosts
+                '''
+            }
+        }
+
+        stage('Deploy NextJs-App to Web Server') {
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'deploy-ssh', keyFileVariable: 'SSH_KEY')]) {
+                    sh '''
+                        chmod 600 $SSH_KEY 
+                        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY dlgustn555@192.168.56.101 "\
+                        docker network create nextjs-playground || true && \
+                        docker stop nextjs-app nextjs-nginx || true && \
+                        docker rm nextjs-app nextjs-nginx || true && \
+                        docker rmi dlgustn555/nextjs-playground dlgustn555/nextjs-playground-nginx || true && \
+                        docker run -d -p 3000:3000 --name nextjs-app --net nextjs-playground dlgustn555/nextjs-playground &&  \
+                        docker run -d -p 80:80 --name nextjs-nginx --net nextjs-playground dlgustn555/nextjs-playground-nginx"
+                    '''
+                }
+            }
+        }
+    }
+}
