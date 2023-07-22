@@ -13,6 +13,12 @@ pipeline {
             }
         }
 
+        stage('NextJs-Nginx Dockerfile Build') {
+            steps {
+                sh 'docker build -t dlgustn555/nextjs-playground-nginx .'
+            }
+        }
+
         stage('Docker Hub Login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-id', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
@@ -41,7 +47,11 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: 'deploy-ssh', keyFileVariable: 'SSH_KEY')]) {
                     sh '''
                         chmod 600 $SSH_KEY 
-                        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY dlgustn555@192.168.56.101 "docker run -d -p 3000:3000 dlgustn555/nextjs-playground"
+                        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY dlgustn555@192.168.56.101 "\
+                        docker stop nextjs-app nextjs-nginx || true && \
+                        docker rm nextjs-app nextjs-nginx || true && \
+                        docker run -d -p 3000:3000 --name nextjs-app dlgustn555/nextjs-playground \
+                        docker run -d -p 80:80 --name nextjs-nginx dlgustn555/nextjs-playground-nginx"
                     '''
                 }
             }
