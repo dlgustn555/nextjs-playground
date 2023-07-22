@@ -10,7 +10,7 @@ pipeline {
         stage('Dockerfile Build') {
             steps {
                 sh 'docker build -t dlgustn555/nextjs-playground .'
-                sh 'docker build -t  dlgustn555/nextjs-playground-nginx .'
+                sh 'docker build -t  dlgustn555/nextjs-playground-nginx ./nginx'
             }
         }
 
