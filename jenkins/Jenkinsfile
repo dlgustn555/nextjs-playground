@@ -1,11 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Pull Codes from Github') {
-            steps {
-                checkout scm
-            }
-        }
+        // stage('Pull Codes from Github') {
+        //     steps {
+        //         checkout scm
+        //     }
+        // }
 
         // stage('NextJs-App Dockerfile Build') {
         //     steps {
