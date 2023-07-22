@@ -7,29 +7,23 @@ pipeline {
             }
         }
 
-        stage('NextJs-App Dockerfile Build') {
-            steps {
-                sh 'docker build -t dlgustn555/nextjs-playground .'
-            }
-        }
-
-        stage('Docker Hub Login') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-id', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                }
-            }
-        }
-
-        stage('NextJs-App Docker Image Push') {
-            steps {
-                sh 'docker push dlgustn555/nextjs-playground'
-            }
-        }
-
-        // stage('DELETE NextJs-App Docker Image ') {
+        // stage('NextJs-App Dockerfile Build') {
         //     steps {
-        //         sh 'docker rmi dlgustn555/nextjs-playground'
+        //         sh 'docker build -t dlgustn555/nextjs-playground .'
+        //     }
+        // }
+
+        // stage('Docker Hub Login') {
+        //     steps {
+        //         withCredentials([usernamePassword(credentialsId: 'docker-hub-id', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        //             sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+        //         }
+        //     }
+        // }
+
+        // stage('NextJs-App Docker Image Push') {
+        //     steps {
+        //         sh 'docker push dlgustn555/nextjs-playground'
         //     }
         // }
 
