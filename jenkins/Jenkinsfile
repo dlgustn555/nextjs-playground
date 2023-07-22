@@ -39,14 +39,10 @@ pipeline {
         stage('Deploy NextJs-App to Web Server') {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'deploy-ssh', keyFileVariable: 'SSH_KEY')]) {
-                    // sh '''
-                    //     chmod 600 $SSH_KEY 
-                    //     ssh -i $SSH_KEY dlgustn555@192.168.56.101 "docker run -d -p 3000:3000 dlgustn555/nextjs-playground"
-                    // '''
                     sh '''
-    chmod 600 $SSH_KEY 
-    ssh -i $SSH_KEY dlgustn555@192.168.56.101 "echo 'Hello from Jenkins'"
-'''
+                        chmod 600 $SSH_KEY 
+                        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i $SSH_KEY dlgustn555@192.168.56.101 "docker run -d -p 3000:3000 dlgustn555/nextjs-playground"
+                    '''
                 }
             }
         }
