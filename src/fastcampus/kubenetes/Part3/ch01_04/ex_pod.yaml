@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: ex_pod
+  labels:
+    run: nginx
+spec:
+  containers:
+    - name: ex_pod_nginx
+      image: nginx
+      imagePullPolicy: IfNotPresent
+      resources: {}
