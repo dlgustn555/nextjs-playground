@@ -4,7 +4,8 @@ const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.end(
     JSON.stringify({
-      podIp: "10.23.424.100",
+      version: "1.0.0",
+      podIp: process.env.POD_IP,
     })
   );
 });
