@@ -13,5 +13,6 @@ spec:
       env:
         - name: POD_IP
           valueFrom:
-            fieldRef: status.podIP
+            fieldRef:
+              fieldPath: status.podIP
       resources: {}
