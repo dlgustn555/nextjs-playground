@@ -7,9 +7,9 @@ cd blue
 echo '========================='
 
 echo 'blue Dockerfile build'
-echo 'build -t dlgustn555/blue'
+echo 'build -t dlgustn555/blue .'
 
-docker build -t dlgustn555/blue
+docker build -t dlgustn555/blue .
 
 echo '========================='
 
@@ -19,9 +19,9 @@ cd ../green
 echo '========================='
 
 echo 'green Dockerfile build'
-echo 'build -t dlgustn555/green'
+echo 'build -t dlgustn555/green .'
 
-docker build -t dlgustn555/green
+docker build -t dlgustn555/green .
 
 echo '========================='
 
@@ -31,9 +31,9 @@ cd ../red
 echo '========================='
 
 echo 'red Dockerfile build'
-echo 'build -t dlgustn555/red'
+echo 'build -t dlgustn555/red .'
 
-docker build -t dlgustn555/red
+docker build -t dlgustn555/red .
 
 echo '========================='
 
@@ -41,3 +41,7 @@ echo '이미지 푸시'
 echo 'docker push dlgustn555/blue'
 echo 'docker push dlgustn555/green'
 echo 'docker push dlgustn555/red'
+
+docker push dlgustn555/blue
+docker push dlgustn555/green
+docker push dlgustn555/red
