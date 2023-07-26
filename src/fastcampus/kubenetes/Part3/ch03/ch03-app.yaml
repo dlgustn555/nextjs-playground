@@ -11,7 +11,7 @@ spec:
       env:
         - name: POD_IP
           valueFrom:
-            fieldRef: status.hostIP
+            fieldRef: status.podIP
       resources: {}
       image: ch03-app
       imagePullPolicy: IfNotPresent
