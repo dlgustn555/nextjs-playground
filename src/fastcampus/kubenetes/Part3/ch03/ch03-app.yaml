@@ -6,7 +6,7 @@ spec:
   containers:
     - name: ch03-app
       image: dlgustn555/ch03-app
-      imagePullPolicy: IfNotPresent
+      imagePullPolicy: Always
       ports:
         - containerPort: 3300
       env:
