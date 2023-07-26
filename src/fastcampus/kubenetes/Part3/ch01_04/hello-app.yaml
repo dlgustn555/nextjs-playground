@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-app
+spec:
+  containers:
+    - name: hello-app
+      image: devchloe/hello-app:1.0
+      ports:
+        - containerPort: 3100
+      resources: {}

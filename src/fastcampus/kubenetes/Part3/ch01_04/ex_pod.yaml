@@ -10,3 +10,4 @@ spec:
       image: nginx
       imagePullPolicy: IfNotPresent
       resources: {}
+# YAML Lint 사이트
