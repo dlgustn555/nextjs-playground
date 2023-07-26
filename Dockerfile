@@ -1,5 +1,5 @@
 ############## STAGE 1 ##############
-FROM node:18.16.1 AS base
+FROM node:18.16.1-alpine AS base
 
 USER root
 
