@@ -4,7 +4,7 @@ metadata:
   name: ch03-app-pod
 spec:
   containers:
-    - name: c-ch03-app-pod
+    - name: ch03-app
       image: dlgustn555/ch03-app
       imagePullPolicy: IfNotPresent
       ports:
