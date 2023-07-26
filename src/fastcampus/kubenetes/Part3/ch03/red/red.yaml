@@ -4,7 +4,7 @@ metadata:
   name: red-pod
 spec:
   containers:
-    - name: c-green
+    - name: c-red
       image: dlgustn555/red
       ports:
         - containerPort: 3302
