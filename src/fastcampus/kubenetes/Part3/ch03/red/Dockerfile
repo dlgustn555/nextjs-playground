@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18.16.1-alpine
 
 # 애를리케이션 디렉토리 생성
 WORKDIR /app
