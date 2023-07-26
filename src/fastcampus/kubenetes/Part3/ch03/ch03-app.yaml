@@ -6,12 +6,12 @@ metadata:
 spec:
   containers:
     - name: c-ch03-app-pod
+      image: ch03-app
+      imagePullPolicy: IfNotPresent
       ports:
         - containerPort: 3300
       env:
         - name: POD_IP
           valueFrom:
-            fieldRef: status.podIP
+            fieldRef: status.hostIP
       resources: {}
-      image: ch03-app
-      imagePullPolicy: IfNotPresent
