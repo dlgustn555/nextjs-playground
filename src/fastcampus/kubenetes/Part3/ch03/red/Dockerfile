@@ -5,4 +5,6 @@ WORKDIR /app
 
 COPY . .
 
-CMD ["npm", "run", "start"]
+EXPOSE 3303
+
+CMD ["node", "red.js"]
