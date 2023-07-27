@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8081
 
-CMD [ "node", "run", "tree.js" ]
+CMD [ "node", "tree.js" ]

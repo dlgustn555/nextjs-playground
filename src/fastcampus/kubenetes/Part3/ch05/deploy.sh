@@ -27,3 +27,5 @@ docker push dlgustn555/sky
 
 kubectl delete pod/sky
 kubectl apply -f sky.yaml
+
+docker rmi $(docker images -f "dangling=true" -q)
