@@ -1,11 +1,14 @@
-import http from "http";
-import { PORT } from "../PORT";
+const http = require("http");
+
+const SERVER_NAME = "SKY";
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  res.end(JSON.stringify("SKY 서버 응답!!"));
+  res.end(JSON.stringify(`${SERVER_NAME} 서버 응답!!`));
 });
 
-server.listen(PORT.SKY, () => {
-  console.log("SKY Server is Running ON ", PORT.SKY);
+const PORT = 8080;
+
+server.listen(PORT, () => {
+  console.log(`${SERVER_NAME} Server is Running ON `, PORT);
 });
