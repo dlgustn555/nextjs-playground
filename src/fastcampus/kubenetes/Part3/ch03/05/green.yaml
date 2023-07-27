@@ -14,6 +14,7 @@ spec:
       name: green-pod
       labels:
         pod: green-pod
+        tier: front-end
     spec:
       containers:
         - name: c-green
