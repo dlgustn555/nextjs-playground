@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tree-pod
+  labels:
+    group: nature
+    concept: earth
+    element: tree
+    position: bottom
+    version: v1
+spec:
+  containers:
+    - name: tree-app
+      image: dlgustn555/tree
+      ports:
+        - containerPort: 8081
+      resources: {}
