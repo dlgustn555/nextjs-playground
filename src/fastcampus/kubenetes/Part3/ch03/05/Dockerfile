@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["run", "green.js"]
+CMD ["node", "green.js"]
