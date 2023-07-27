@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD [ "node", "run", "rose.js" ]
+CMD [ "node",  "rose.js" ]

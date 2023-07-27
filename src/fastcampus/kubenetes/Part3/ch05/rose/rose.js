@@ -1,5 +1,4 @@
-import http from "http";
-import { PORT } from "../PORT";
+const http = require("http");
 
 const SERVER_NAME = "ROSE";
 const server = http.createServer((req, res) => {
@@ -7,6 +6,8 @@ const server = http.createServer((req, res) => {
   res.end(JSON.stringify(`${SERVER_NAME} 서버 응답!!`));
 });
 
-server.listen(PORT[SERVER_NAME], () => {
-  console.log(`${SERVER_NAME} Server is Running ON `, PORT.SKY);
+const PORT = 8080;
+
+server.listen(PORT, () => {
+  console.log(`${SERVER_NAME} Server is Running ON `, PORT);
 });
