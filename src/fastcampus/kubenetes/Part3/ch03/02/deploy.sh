@@ -2,7 +2,7 @@
 
 echo '================ blue-app ReplicaSet 생성 ================'
 
-docker build -t dlgustn555/ch03-02-blue
+docker build -t dlgustn555/ch03-02-blue .
 docker push dlgustn555/ch03-02-blue
 
 kubectl delete replicaSet

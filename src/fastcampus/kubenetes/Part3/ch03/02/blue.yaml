@@ -15,6 +15,9 @@ spec:
     spec:
       containers:
         - name: blue-app-container
+          image: dlgustn555/ch03-02-blue
+          ports:
+            - containerPort: 8080
           env:
             - name: HOST_IP
               valueFrom:
