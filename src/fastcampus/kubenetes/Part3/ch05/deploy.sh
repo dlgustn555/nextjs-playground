@@ -28,4 +28,13 @@ docker push dlgustn555/sky
 kubectl delete pod/sky
 kubectl apply -f sky.yaml
 
+echo '================ tree POD 배포 ================'
+cd ../tree
+
+docker build -t dlgustn555/tree .
+docker push dlgustn555/tree
+
+kubectl delete pod/tree
+kubectl apply -f tree.yaml
+
 docker rmi $(docker images -f "dangling=true" -q)
