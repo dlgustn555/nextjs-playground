@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: green-replica-set
+  labels:
+    app: green-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: green-pod
+  template:
+    metadata:
+      name: green-pod
+      labels:
+        pod: green-pod
+    spec:
+      containers:
+        - name: c-green
+          image: dlgustn555/ch03-05-green
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POD_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
