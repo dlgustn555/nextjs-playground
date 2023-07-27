@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["node", "run", "start:hello"]
+CMD ["node", "hello.js"]
