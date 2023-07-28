@@ -5,6 +5,8 @@ metadata:
   labels:
     pod: my-app-pod
 spec:
+  strategy:
+    type: Recreate
   replicas: 3
   selector:
     matchLabels:
@@ -14,8 +16,6 @@ spec:
       labels:
         pod: my-app-pod
     spec:
-      strategy:
-        type: Recreate
       containers:
         - name: c-my-app
           image: dlgustn555/my-app:1.0.0
