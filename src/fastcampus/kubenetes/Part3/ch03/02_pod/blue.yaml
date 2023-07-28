@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: blue-replica-set
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blue-app-pod
+  template:
+    metadata:
+      name: blue-app-pod
+      labels:
+        app: blue-app-pod
+        env: local
+    spec:
+      containers:
+        - name: blue-app-container
+          image: dlgustn555/ch03-02-blue
+          ports:
+            - containerPort: 8080
+          env:
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
