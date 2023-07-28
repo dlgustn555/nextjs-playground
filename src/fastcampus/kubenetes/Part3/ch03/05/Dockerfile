@@ -8,6 +8,8 @@ WORKDIR /app
 
 COPY . .
 
+ENV VERSION=1.0
+
 EXPOSE 8080
 
 CMD ["node", "green.js"]
