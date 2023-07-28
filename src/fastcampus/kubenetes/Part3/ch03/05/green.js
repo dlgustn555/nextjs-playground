@@ -5,6 +5,7 @@ const server = http.createServer((_, res) => {
   res.end(
     JSON.stringify({
       status: "OK",
+      version: process.env.VERSION,
       podIp: process.env.POD_IP,
     })
   );
