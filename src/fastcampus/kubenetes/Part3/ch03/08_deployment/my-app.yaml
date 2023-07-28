@@ -4,6 +4,8 @@ metadata:
   name: my-app-deployment
   labels:
     pod: my-app-pod
+  annotations:
+    kubernetes.io/change-cause: "Initial Image 1.0.0"
 spec:
   strategy:
     type: RollingUpdate
