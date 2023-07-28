@@ -6,8 +6,11 @@ metadata:
     pod: my-app-pod
 spec:
   strategy:
-    type: Recreate
-  replicas: 3
+    type: RollingUpdate
+    RollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 1
+  replicas: 5
   selector:
     matchLabels:
       pod: my-app-pod
