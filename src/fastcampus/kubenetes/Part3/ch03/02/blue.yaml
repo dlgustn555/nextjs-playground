@@ -12,6 +12,7 @@ spec:
       name: blue-app-pod
       labels:
         app: blue-app-pod
+        env: local
     spec:
       containers:
         - name: blue-app-container
