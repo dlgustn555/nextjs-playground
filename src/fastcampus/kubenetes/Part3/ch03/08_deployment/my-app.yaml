@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-app-deployment
+  labels:
+    pod: my-app-pod
 spec:
   replicas: 3
   selector:
@@ -12,6 +14,8 @@ spec:
       labels:
         pod: my-app-pod
     spec:
+      strategy:
+        type: Recreate
       containers:
         - name: c-my-app
           image: dlgustn555/my-app:1.0.0
