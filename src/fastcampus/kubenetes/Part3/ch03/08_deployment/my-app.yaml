@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+  labels:
+    pod: my-app-pod
+  annotations:
+    kubernetes.io/change-cause: "Initial Image 1.0.0"
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 1
+  replicas: 5
+  selector:
+    matchLabels:
+      pod: my-app-pod
+  template:
+    metadata:
+      labels:
+        pod: my-app-pod
+    spec:
+      containers:
+        - name: c-my-app
+          image: dlgustn555/my-app:1.0.0
+          ports:
+            - containerPort: 8080
+          resources: {}
