@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: case1-deployment
+  labels:
+    app: case1-app
+    annotations: case1 deployment init.
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: case1-app
+  template:
+    metadata:
+      name: case1-pod
+      labels:
+        app: case1-app
+    spec:
+      containers:
+        - name: case1-container
+          image: dlgustn555/case1:1.0.0
+          ports:
+            - containerPort: 8080
+          resources: {}
