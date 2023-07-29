@@ -4,9 +4,9 @@ const server = http.createServer((_, res) => {
   res.statusCode = 200;
   res.end(
     JSON.stringify({
-      nodeIp: process.env.NODE_IP,
-      podIp: process.env.POD_IP,
+      nodeName: process.env.NODE_NAME,
       hostIp: process.env.HOST_IP,
+      podIp: process.env.POD_IP,
     })
   );
 });
