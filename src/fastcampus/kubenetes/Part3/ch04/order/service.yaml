@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: order
+  labels:
+    service: order
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    service: order
+  type: ClusterIP

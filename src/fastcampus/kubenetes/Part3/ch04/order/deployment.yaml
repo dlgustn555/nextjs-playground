@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+  labels:
+    service: order
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: order
+  template:
+    metadata:
+      labels:
+        service: order
+      spec:
+        containers:
+          - name: order
+            image: dlgustn555/order:1.0.0
+            ports:
+              - containers: 8080
+            resources: {}
