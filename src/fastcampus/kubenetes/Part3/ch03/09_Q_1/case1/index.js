@@ -6,6 +6,7 @@ const server = http.createServer((_, res) => {
     JSON.stringify({
       nodeIp: process.env.NODE_IP,
       podIp: process.env.POD_IP,
+      hostIp: process.env.HOST_IP,
     })
   );
 });
