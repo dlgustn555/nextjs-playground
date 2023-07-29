@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: delivery
+  labels:
+    service: delivery
+    project: snackbar
+  namespace: hyunsu
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: delivery
+  template:
+    metadata:
+      name: delivery
+      labels:
+        service: delivery
+        project: snackbar
+      namespace: hyunsu
+    spec:
+      containers:
+        - name: delivery
+          image: dlgustn555/delivery:1.0.0
+          ports:
+            - containerPort: 8080
+          resources: {}
