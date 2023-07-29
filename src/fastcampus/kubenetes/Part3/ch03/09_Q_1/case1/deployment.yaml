@@ -4,7 +4,8 @@ metadata:
   name: case1-deployment
   labels:
     app: case1-app
-    annotations: case1 deployment init.
+  annotations:
+    kubernetes.io/change-cause: "case1 deployment init."
 spec:
   replicas: 3
   selector:
