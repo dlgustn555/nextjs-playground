@@ -4,6 +4,8 @@ metadata:
   name: payment
   labels:
     service: payment
+    project: snackbar
+  namespace: lee
 spec:
   replicas: 3
   selector:
@@ -14,6 +16,8 @@ spec:
       name: payment
       labels:
         service: payment
+        project: snackbar
+      namespace: lee
     spec:
       containers:
         - name: payment

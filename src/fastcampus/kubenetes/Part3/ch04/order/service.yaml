@@ -4,10 +4,12 @@ metadata:
   name: order
   labels:
     service: order
+    project: snackbar
+  namespace: lee
 spec:
+  type: ClusterIP
+  selector:
+    service: order
   ports:
     - port: 80
       targetPort: 8080
-  selector:
-    service: order
-  type: ClusterIP

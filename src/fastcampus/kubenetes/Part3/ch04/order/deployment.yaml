@@ -4,6 +4,8 @@ metadata:
   name: order
   labels:
     service: order
+    project: snackbar
+  namespace: lee
 spec:
   replicas: 3
   selector:
@@ -13,6 +15,8 @@ spec:
     metadata:
       labels:
         service: order
+        project: snackbar
+      namespace: lee
     spec:
       containers:
         - name: order

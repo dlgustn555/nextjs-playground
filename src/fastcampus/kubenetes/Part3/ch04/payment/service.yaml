@@ -4,6 +4,8 @@ metadata:
   name: payment
   labels:
     service: payment
+    project: snackbar
+  namespace: lee
 spec:
   ports:
     - port: 80
