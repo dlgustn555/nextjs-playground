@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["node", "my-app.js"]
+CMD ["node", "index.js"]

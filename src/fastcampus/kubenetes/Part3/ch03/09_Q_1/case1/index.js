@@ -1,22 +1,17 @@
 const http = require("http");
 
-const server = http.createServer((req, res) => {
+const server = http.createServer((_, res) => {
   res.statusCode = 200;
   res.end(
     JSON.stringify({
-      version: "1.0.0",
-      page: "blue",
       nodeName: process.env.NODE_NAME,
       hostIp: process.env.HOST_IP,
       podIp: process.env.POD_IP,
-      podName: process.env.POD_NAME,
-      namespace: process.env.NAMESPACE,
     })
   );
 });
 
-const PORT = 3301;
-
+const PORT = 8080;
 server.listen(PORT, () => {
-  console.log("Server is Running ON PORT: ", PORT);
+  console.log(`Server is Running ON :${PORT}.`);
 });

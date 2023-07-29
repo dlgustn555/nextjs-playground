@@ -6,9 +6,10 @@ const server = http.createServer((req, res) => {
     JSON.stringify({
       version: "1.0.0",
       page: "green",
+      nodeName: process.env.NODE_NAME,
+      hostIp: process.env.HOST_IP,
       podIp: process.env.POD_IP,
       podName: process.env.POD_NAME,
-      nodeName: process.env.NODE_NAME,
       namespace: process.env.NAMESPACE,
     })
   );

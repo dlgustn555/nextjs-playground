@@ -4,10 +4,8 @@ USER root
 
 RUN apk add --update curl && rm -rf /var/cache/apk/*
 
-WORKDIR /app
-
 COPY . .
 
 EXPOSE 8080
 
-CMD ["node", "my-app.js"]
+CMD [ "node", "index.js" ]
