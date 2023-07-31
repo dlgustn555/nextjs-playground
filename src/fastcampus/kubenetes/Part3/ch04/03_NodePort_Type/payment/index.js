@@ -4,7 +4,7 @@ const server = http.createServer((_, res) => {
   res.statusCode = 200;
   res.end(
     JSON.stringify({
-      server: "Payment Server",
+      server: "👻👻👻 Payment Server",
       podIp: process.env.POD_IP,
       hostIp: process.env.HOST_IP,
     })
