@@ -7,10 +7,9 @@ metadata:
     project: snackbar
   namespace: snackbar
 spec:
+  type: NodePort
+  selector:
+    service: order
   ports:
     - port: 80
       targetPort: 8080
-  selector:
-    service: order
-    project: snackbar
-  type: NodePort

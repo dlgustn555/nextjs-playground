@@ -2,20 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: order
+  namespace: snackbar
   labels:
     service: order
     project: snackbar
-  namespace: snackbar
 spec:
   replicas: 3
   selector:
     matchLabels:
       service: order
+      project: snackbar
   template:
     metadata:
       name: order
       labels:
         service: order
+        project: snackbar
       namespace: snackbar
     spec:
       containers:

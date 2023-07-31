@@ -11,10 +11,12 @@ spec:
   selector:
     matchLabels:
       service: payment
+      project: snackbar
   template:
     metadata:
       labels:
         service: payment
+        project: snackbar
       name: payment
       namespace: snackbar
     spec:
