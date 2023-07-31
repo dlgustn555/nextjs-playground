@@ -35,7 +35,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.hostIP
-      image: dlgustn555/order:4.0.0.1
+      image: dlgustn555/order:4.0.1
       name: order
       ports:
         - containerPort: 8080
