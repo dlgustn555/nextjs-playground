@@ -15,18 +15,18 @@ spec:
     - host: order.snackbar.com
       http:
         paths:
-          backend:
+          - backend:
             service:
               name: order
               port:
                 number: 80
-          path: /order
-          pathType: Prefix
+            path: /order
+            pathType: Prefix
 
     - host: payment.snackbar.com
       http:
         paths:
-          backend:
+          - backend:
             service:
               name: payment
               port:
