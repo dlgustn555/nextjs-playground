@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: order
+  labels:
+    service: order
+    project: snackbar
+  namespace: snackbar
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    service: order
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+  labels:
+    service: order
+    project: snackbar
+  namespace: snackbar
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: order
+  template:
+    metadata:
+      name: order
+      labels:
+        service: order
+        project: snackbar
+      namespace: snackbar
+    spec:
+      containers:
+        - env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          image: dlgustn555/order:4.0.1
+          name: order
+          ports:
+            - containerPort: 8080
+          resources: {}
