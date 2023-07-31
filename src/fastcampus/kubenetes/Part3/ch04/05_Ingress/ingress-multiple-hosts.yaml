@@ -20,8 +20,8 @@ spec:
                 name: order
                 port:
                   number: 80
-              path: /order
-              pathType: Prefix
+            path: /order
+            pathType: Prefix
 
     - host: payment.snackbar.com
       http:
@@ -31,5 +31,5 @@ spec:
                 name: payment
                 port:
                   number: 80
-              path: /payment
-              pathType: Prefix
+            path: /payment
+            pathType: Prefix
