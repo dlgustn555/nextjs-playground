@@ -13,7 +13,7 @@ spec:
       livenessProbe:
         httpGet:
           path: /
-          port: 8080||
+          port: 8080
         initialDelaySeconds: 60
         successThreshold: 1
         failureThreshold: 1
