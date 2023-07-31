@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+  labels:
+    service: order
+    project: snackbar
+  namespace: snackbar
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: order
+  template:
+    metadata:
+      name: order
+      labels:
+        service: order
+      namespace: snackbar
+    spec:
+      containers:
+        - name: order
+          image: dlgustn555/order:1.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: HOST_IP
+              valueFrom: status.hostIP
+          resources: {}
