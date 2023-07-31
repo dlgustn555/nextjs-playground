@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment
+  labels:
+    service: payment
+    project: snackbar
+  namespace: snackbar
+spec:
+  type: NodePort
+  selector:
+    service: payment
+    project: snackbar
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  labels:
+    service: payment
+    project: snackbar
+  namespace: snackbar
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: payment
+      project: snackbar
+  template:
+    metadata:
+      name: payment
+      labels:
+        service: payment
+        project: snackbar
+      namespace: snackbar
+    spec:
+      containers:
+        - env:
+          image:
+          name:
+          ports:
+          resources: {}
