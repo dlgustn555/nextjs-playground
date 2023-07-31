@@ -14,10 +14,9 @@ spec:
   ports:
     - port: 80
       targetPort: 8080
-
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: order
   labels:
@@ -25,18 +24,31 @@ metadata:
     project: snackbar
   namespace: snackbar
 spec:
-  containers:
-    - env:
-        - name: POD_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.podIP
-        - name: HOST_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
-      image: dlgustn555/order:4.0.1
+  replicas: 3
+  selector:
+    matchLabels:
+      service: order
+      project: snackbar
+  template:
+    metadata:
       name: order
-      ports:
-        - containerPort: 8080
-      resources: {}
+      labels:
+        service: order
+        project: snackbar
+      namespace: snackbar
+    spec:
+      containers:
+        - env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          image: dlgustn555/order:4.0.1
+          name: order
+          ports:
+            - containerPort: 8080
+          resources: {}
