@@ -5,6 +5,7 @@ const Router = require("@koa/router");
 const app = new koa();
 const router = new Router();
 
+//* 주문 결제
 router.post("/checkout", async (ctx) => {
   //* 영수증 조회
   const { data } = await axios.get(
@@ -12,8 +13,22 @@ router.post("/checkout", async (ctx) => {
   );
   ctx.body = {
     type: "Order [POST]/checkout",
-    message: "영수증을 조회합니다.",
-    data,
+    message: "주문결제가 완료되었습니다.",
+    receipt: data,
+  };
+});
+
+//* 주문 상태 확인
+router.get("", async (ctx) => {
+  //* 배달상태 조회
+  const { data } = await axios.get(
+    `http://${process.env.DELIVERY_HOST}:${DELIVERY_PORT}/status`
+  );
+
+  ctx.body = {
+    type: "Order [POST]/checkout",
+    message: "주문 상태를 확인 합니다.",
+    status: data,
   };
 });
 
