@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: unhealthy
-      image: hoonjeong/unhealthy-app:1.0
+      image: yoonjeong/unhealthy-app:1.0
       ports:
         - containerPort: 8080
       readinessProbe:
