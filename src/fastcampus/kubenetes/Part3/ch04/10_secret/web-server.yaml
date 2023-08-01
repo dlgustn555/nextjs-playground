@@ -8,13 +8,13 @@ spec:
       targetPort: 80
   selector:
     app: my-app
-  type: ClusterIP
+  type: NodePort
 
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-app
+  name: web-server
   labels:
     app: my-app
 spec:
