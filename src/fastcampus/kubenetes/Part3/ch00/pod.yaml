@@ -5,9 +5,22 @@ metadata:
   labels:
     project: ch00
 spec:
+  volumes:
+    - name: nginx-config
+      configMap:
+        name: nginx-config
   containers:
-    - name: order
+    - name: order-app
       image: dlgustn555/order:4.0.1
       ports:
         - containerPort: 8080
       resources: {}
+
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 80
+      resources: {}
+      volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/config.d
