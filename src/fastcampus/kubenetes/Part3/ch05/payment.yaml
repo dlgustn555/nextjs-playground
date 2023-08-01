@@ -29,5 +29,5 @@ spec:
         - name: PORT
           valueFrom:
             configMapKeyRef:
-              key: ORDER_HTTP_PORT
+              key: PAYMENT_HTTP_PORT
               name: port-config
