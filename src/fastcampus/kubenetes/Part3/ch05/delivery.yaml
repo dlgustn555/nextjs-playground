@@ -21,7 +21,7 @@ metadata:
 spec:
   containers:
     - name: delivery-app
-      image: dlgustn555/delivery:5.0.0
+      image: dlgustn555/delivery:5.0.1
       ports:
         - containerPort: 8080
       resources: {}

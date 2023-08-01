@@ -21,7 +21,7 @@ metadata:
 spec:
   containers:
     - name: order-app
-      image: dlgustn555/order:5.0.2
+      image: dlgustn555/order:5.0.3
       ports:
         - containerPort: 8080
       resources: {}
