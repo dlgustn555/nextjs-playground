@@ -8,9 +8,7 @@ const router = new Router();
 //* 주문 결제
 router.post("/checkout", async (ctx) => {
   //* 영수증 조회
-  const { data } = await axios.get(
-    `http://${process.env.PAYMENT_HOST}:${process.env.PAYMENT_PORT}/receipt`
-  );
+  const { data } = await axios.get(`http://payment.payment/receipt`);
   ctx.body = {
     type: "Order [POST]/checkout",
     message: "주문결제가 완료되었습니다.",
@@ -19,11 +17,9 @@ router.post("/checkout", async (ctx) => {
 });
 
 //* 주문 상태 확인
-router.get("", async (ctx) => {
+router.get("/detail", async (ctx) => {
   //* 배달상태 조회
-  const { data } = await axios.get(
-    `http://${process.env.DELIVERY_HOST}:${DELIVERY_PORT}/status`
-  );
+  const { data } = await axios.get(`http://delivery.delivery/status`);
 
   ctx.body = {
     type: "Order [POST]/checkout",
