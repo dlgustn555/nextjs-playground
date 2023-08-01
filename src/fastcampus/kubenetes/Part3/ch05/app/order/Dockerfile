@@ -3,11 +3,11 @@ FROM node:18.16.1-alpine AS base
 
 USER root
 
-RUN 
+RUN apk add --update curl && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
-COPY ./package.json ./pakcage-lock.json ./
+COPY ./package.json  ./
 
 ############## STAGE 2 ##############
 FROM base AS build
