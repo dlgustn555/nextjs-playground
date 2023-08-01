@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ch00-deployment
+  labels:
+    project: ch00
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ch00-pod
+  template:
+    metadata:
+      name: ch00-pod
+      labels:
+        project: ch00
+        app: ch00-pod
+    spec:
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
+      containers:
+        - name: order-app
+          image: dlgustn555/order:4.0.1
+          ports:
+            - containerPort: 8080
+          resources: {}
+
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+          resources: {}

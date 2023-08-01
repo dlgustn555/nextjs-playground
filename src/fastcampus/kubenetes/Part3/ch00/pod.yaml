@@ -4,6 +4,7 @@ metadata:
   name: ch00-pod
   labels:
     project: ch00
+    app: ch00-pod
 spec:
   volumes:
     - name: nginx-config
@@ -20,7 +21,7 @@ spec:
       image: nginx
       ports:
         - containerPort: 80
-      resources: {}
       volumeMounts:
         - name: nginx-config
           mountPath: /etc/nginx/conf.d
+      resources: {}
