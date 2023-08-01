@@ -11,7 +11,8 @@ router.post("/checkout", async (ctx) => {
     `http://${process.env.PAYMENT_HOST}:${process.env.PAYMENT_PORT}/receipt`
   );
   ctx.body = {
-    type: "[POST] /checkout",
+    type: "Order [POST]/checkout",
+    message: "영수증을 조회합니다.",
     data,
   };
 });
