@@ -30,7 +30,7 @@ router.get("/detail", async (ctx) => {
 
 app.use(router.routes()).use(router.allowedMethods());
 
-const PORT = 8080;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`Order Server is Running ON ${PORT}......!!!`);
