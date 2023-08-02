@@ -9,7 +9,6 @@ spec:
   type: LoadBalancer
   selector:
     app: delivery-app
-    tag: 5.0.1
   ports:
     - port: 80
       targetPort: 8080
@@ -26,7 +25,6 @@ spec:
   type: LoadBalancer
   selector:
     app: payment-app
-    tag: 5.0.1
   ports:
     - port: 80
       targetPort: 8080
@@ -43,7 +41,6 @@ spec:
   type: LoadBalancer
   selector:
     app: order-app
-    tag: 5.0.5
   ports:
     - port: 80
       targetPort: 8080
