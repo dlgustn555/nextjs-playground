@@ -16,6 +16,7 @@ spec:
       namespace: delivery
       labels:
         app: delivery-app
+        tag: 5.0.1
         project: snackbar
     spec:
       containers:
@@ -49,6 +50,7 @@ spec:
       namespace: payment
       labels:
         app: payment-app
+        tag: 5.0.1
         project: snackbar
     spec:
       containers:
@@ -83,6 +85,7 @@ spec:
       namespace: order
       labels:
         app: order-app
+        tag: 5.0.5
         project: snackbar
     spec:
       containers:
