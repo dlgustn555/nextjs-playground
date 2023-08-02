@@ -87,7 +87,7 @@ spec:
     spec:
       containers:
         - name: order-web
-          image: dlgustn555/order:5.0.4
+          image: dlgustn555/order:5.0.5
           ports:
             - containerPort: 8080
           env:

@@ -13,23 +13,23 @@ router.get("/", (ctx) => {
 });
 
 //* 주문 결제
-router.post("/checkout", async (ctx) => {
+router.post("/order/checkout", async (ctx) => {
   //* 영수증 조회
   const { data } = await axios.get(`http://payment.payment/receipt`);
   ctx.body = {
-    type: "Order [POST]/checkout",
+    type: "Order [POST]/order/checkout",
     message: "주문결제가 완료되었습니다.",
     receipt: data,
   };
 });
 
 //* 주문 상태 확인
-router.get("/detail", async (ctx) => {
+router.get("/order/detail", async (ctx) => {
   //* 배달상태 조회
   const { data } = await axios.get(`http://delivery.delivery/status`);
 
   ctx.body = {
-    type: "Order [POST]/checkout",
+    type: "Order [POST]/order/checkout",
     message: "주문 상태를 확인 합니다.",
     status: data,
   };
