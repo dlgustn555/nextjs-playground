@@ -11,4 +11,13 @@ spec:
       name: order
       port:
         number: 80
-  # rules:
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: /order
+            backend:
+              service:
+                name: order
+                port:
+                  number: 80
