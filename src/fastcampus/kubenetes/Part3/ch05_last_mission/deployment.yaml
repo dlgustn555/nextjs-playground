@@ -19,7 +19,7 @@ spec:
         project: snackbar
     spec:
       containers:
-        - name: delivery-app
+        - name: delivery-web
           image: dlgustn555/delivery:5.0.1
           ports:
             - containerPort: 8080
@@ -52,7 +52,7 @@ spec:
         project: snackbar
     spec:
       containers:
-        - name: payment-app
+        - name: payment-web
           image: dlgustn555/payment:5.0.1
           ports:
             - containerPort: 8080
@@ -86,7 +86,7 @@ spec:
         project: snackbar
     spec:
       containers:
-        - name: order-app
+        - name: order-web
           image: dlgustn555/order:5.0.3
           ports:
             - containerPort: 8080
