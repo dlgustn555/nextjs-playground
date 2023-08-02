@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: delivery
+  namespace: delivery
+  labels:
+    project: snackbar
+spec:
+  type: LoadBalancer
+  selector:
+    app: delivery-app
+  ports:
+    - port: 80
+      targetPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment
+  namespace: payment
+  labels:
+    project: snackbar
+spec:
+  type: LoadBalancer
+  selector:
+    app: payment-app
+  ports:
+    - port: 80
+      targetPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order
+  namespace: order
+  labels:
+    project: snackbar
+spec:
+  type: LoadBalancer
+  selector:
+    app: order-app
+  ports:
+    - port: 80
+      targetPort: 8080
+
+---
+
