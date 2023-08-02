@@ -8,4 +8,6 @@ metadata:
 spec:
   defaultBackend:
     service:
-  rules:
+      name: order
+      port: 80
+  # rules:
