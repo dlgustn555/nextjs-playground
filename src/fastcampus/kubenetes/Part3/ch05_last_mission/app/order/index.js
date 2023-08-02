@@ -5,6 +5,13 @@ const Router = require("@koa/router");
 const app = new koa();
 const router = new Router();
 
+router.get("/", (ctx) => {
+  ctx.body = {
+    type: "Order [GET]/",
+    message: "메뉴를 선택한 후 주문해 주세요.",
+  };
+});
+
 //* 주문 결제
 router.post("/checkout", async (ctx) => {
   //* 영수증 조회
