@@ -85,12 +85,12 @@ spec:
       namespace: order
       labels:
         app: order-app
-        tag: 5.0.5
+        tag: 5.0.6
         project: snackbar
     spec:
       containers:
         - name: order-web
-          image: dlgustn555/order:5.0.5
+          image: dlgustn555/order:5.0.6
           ports:
             - containerPort: 8080
           env:
@@ -99,4 +99,12 @@ spec:
                 configMapKeyRef:
                   key: ORDER_HTTP_PORT
                   name: port-config
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
           resources: {}

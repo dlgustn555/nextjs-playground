@@ -18,6 +18,8 @@ router.post("/order/checkout", async (ctx) => {
   const { data } = await axios.get(`http://payment.payment/receipt`);
   ctx.body = {
     type: "Order [POST]/order/checkout",
+    podIp: process.env.POD_IP,
+    hostIp: process.env.HOST_IP,
     message: "주문결제가 완료되었습니다.",
     receipt: data,
   };
@@ -30,6 +32,8 @@ router.get("/order/detail", async (ctx) => {
 
   ctx.body = {
     type: "Order [POST]/order/checkout",
+    podIp: process.env.POD_IP,
+    hostIp: process.env.HOST_IP,
     message: "주문 상태를 확인 합니다.",
     status: data,
   };
