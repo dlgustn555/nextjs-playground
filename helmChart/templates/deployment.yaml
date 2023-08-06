@@ -18,7 +18,7 @@ spec:
         app: "{{ .Values.name }}"
     spec:
       containers:
-        - name: nextJs-app
+        - name: nextjs-app
           image: dlgustn555/nextjs-playground:{{ .Values.app.tag }}
           ports:
             - containerPort: 3000
