@@ -1,24 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "deploy-{{ .Values.name }}"
-  namespace: "{{ .Values.name }}"
+  name: deploy-{{ .Values.name }}
   labels:
-    app: "{{ .Values.name }}"
+    app: {{ .Values.name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: "{{ .Values.name }}"
+      app: {{ .Values.name }}
   template:
     metadata:
-      name: "pod-{{ .Values.name }}"
-      namespace: "{{ .Values.name }}"
+      name: pod-{{ .Values.name }}
       labels:
-        app: "{{ .Values.name }}"
+        app: {{ .Values.name }}
     spec:
       containers:
         - name: nextjs-app
-          image: dlgustn555/nextjs-playground:{{ .Values.app.tag }}
+          image: dlgustn555/{{ .Value.name }}:{{ .Values.app.tag }}
           ports:
             - containerPort: 3000
