@@ -1,6 +1,6 @@
 replicaCount: 1
 
-name: nextjs-playground
+name: nextjs-playground-app
 
 app:
   tag: 0.0.1
