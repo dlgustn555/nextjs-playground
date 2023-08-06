@@ -1,14 +1,14 @@
 apiVersion: v1
-kind:   Service
+kind: Service
 metadata:
-    name: svc-{{ .Values.name }}
-    namespace: {{ .Values.name }}
-    labels:
-        app: {{ .Values.name }}
+  name: "svc-{{ .Values.name }}"
+  namespace: "{{ .Values.name }}"
+  labels:
+    app: "{{ .Values.name }}"
 spec:
-    type: LoadBalancer
-    selector:
-        app: {{ .Values.name }}
-    ports:
-        port: 80
-        targetPort: 3000
+  type: LoadBalancer
+  selector:
+    app: "{{ .Values.name }}"
+  ports:
+    - port: 80
+      trgetPort: 3000
