@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: nextjs-app
-          image: dlgustn555/{{ .Value.name }}:{{ .Values.app.tag }}
+          image: dlgustn555/{{ .Values.name }}:{{ .Values.app.tag }}
           ports:
             - containerPort: 3000
