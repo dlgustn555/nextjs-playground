@@ -2,7 +2,7 @@ replicaCount: 1
 
 name: nextjs-playground
 
-nextjs-playground:
+app:
   tag: 0.0.1
 
 imagePullSecrets: []

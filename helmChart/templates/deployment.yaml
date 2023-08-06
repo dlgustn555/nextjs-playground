@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: nextJs-app
-          image: dlgustn555/nextjs-playground:{{ .Values.nextjs-playground.tag }}
+          image: dlgustn555/nextjs-playground:{{ .Values.app.tag }}
           ports:
             - containerPort: 3000
 
