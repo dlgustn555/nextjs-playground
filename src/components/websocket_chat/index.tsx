@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const WebSocketChart = () => {
   const [messages, setMessages] = useState<string[]>([]);
   useEffect(() => {
-    const socket = new WebSocket(`ws://192.168.56.101:4000/ws`);
+    const socket = new WebSocket(`ws://localhost:4000/ws`);
 
     socket.addEventListener("open", () => {
       socket.send("Hello~!! I Connect!!");
