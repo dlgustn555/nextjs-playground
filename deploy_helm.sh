@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+git pull
+
 read -p "도커이미지 태그: " IMAGE_TAG
 
 echo "==========> 입력된 도커이미지 태그: $IMAGE_TAG"
