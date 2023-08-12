@@ -39,7 +39,15 @@ const WebSocketChat: React.FC = () => {
 
   return (
     <div className="p-16 space-y-8">
-      <div className="bg-gray-100 p-2">채팅목록</div>
+      <div className="bg-gray-100 p-2">
+        <ul>
+          {messages.map((message, index) => (
+            <li key={index} className="py-2">
+              {message}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className="space-x-4 flex">
         <input
           className="border-gray-400 p-4 rounded flex-1"
@@ -54,14 +62,6 @@ const WebSocketChat: React.FC = () => {
           보내기
         </button>
       </div>
-
-      <ul>
-        {messages.map((message, index) => (
-          <li key={index} className="py-2">
-            {message}
-          </li>
-        ))}
-      </ul>
     </div>
   )
 }
