@@ -11,8 +11,8 @@ const WebSocketChat: React.FC = () => {
     setMessage(e.target.value)
   }
 
-  const handleButtonClick = (event: any) => {
-    socket?.send(message)
+  const handleButtonClick = () => {
+    socket?.send(JSON.stringify({ message }))
     setMessage("")
   }
 
@@ -22,12 +22,13 @@ const WebSocketChat: React.FC = () => {
 
   useEffect(() => {
     socket?.addEventListener("open", () => {
-      socket.send("Hello~!! I Connect!!")
+      socket.send(JSON.stringify({ message: "Hello~!! I Connect!!" }))
     })
 
     socket?.addEventListener("message", (event) => {
       if (typeof event.data === "string") {
-        setMessages((prev) => [...prev, event.data as string])
+        const { message } = JSON.parse(event.data)
+        setMessages((prev) => [...prev, message])
       }
     })
 
